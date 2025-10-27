@@ -5,14 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>World humanity revolution, UK</title>
   <meta name="description" content="World humanity revolution, UK — a registered British political party in Great Britain (England, Scotland and Wales)." />
-  <meta property="og:title" content="World humanity revolution, UK" />
-  <meta property="og:description" content="A movement committed to life, dignity and service across Great Britain." />
   <link rel="icon" href="/WHR%20Logo.png" />
   <style>
-    :root{
-      --green:#1e7d32; --green-700:#155d24; --yellow:#ffeb3b;
-      --text:#122015; --muted:#4b5b50; --maxw:1100px; --radius:18px; --shadow:0 10px 25px rgba(0,0,0,.08);
-    }
+    :root{--green:#1e7d32;--green-700:#155d24;--text:#122015;--muted:#4b5b50;--maxw:1100px;--radius:18px;--shadow:0 10px 25px rgba(0,0,0,.08);}
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--text)}
     a{color:var(--green);text-decoration:none}
@@ -21,764 +16,173 @@
 
     /* Header */
     header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e8eee9}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px;flex-wrap:wrap}
     .brand{display:flex;align-items:center;gap:10px}
     .brand img{width:40px;height:40px;border-radius:50%}
     .brand span{font-weight:800;letter-spacing:.2px}
 
-    /* Desktop nav */
-    .nav-links{display:flex;gap:16px;align-items:center}
+    /* Dropdown menu */
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+    nav li{position:relative}
+    nav li ul{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e8eee9;border-radius:10px;box-shadow:var(--shadow);min-width:180px;z-index:100}
+    nav li:hover ul{display:block}
+    nav li ul li{padding:8px 12px}
+    nav li ul li a{display:block;padding:4px 0}
 
-    /* Mobile menu */
-    .menu-btn{display:none;background:transparent;border:0;padding:8px;border-radius:10px}
-    .menu-btn:focus{outline:2px solid var(--green)}
-    .mobile-menu{display:none;position:absolute;inset:64px 0 auto 0;background:#fff;border-bottom:1px solid #e8eee9}
-    .mobile-menu a{display:block;padding:14px 20px;border-top:1px solid #f0f5f1}
-
-    @media (max-width:900px){
-      .nav-links{display:none}
-      .menu-btn{display:inline-flex}
+    @media(max-width:900px){
+      nav ul{display:none;flex-direction:column;background:#fff;width:100%;border-top:1px solid #e8eee9}
+      nav ul.show{display:flex}
     }
 
-    /* Hero */
-    .hero{background:radial-gradient(circle at 20% 0%, rgba(255,235,59,.35), transparent 50%),linear-gradient(180deg,#fff, #f7fff8);}
-    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;padding:48px 0}
-    @media (max-width:900px){.hero-inner{grid-template-columns:1fr}}
-    .tag{display:inline-block;background:rgba(30,125,50,.08);border:1px solid rgba(30,125,50,.18);padding:6px 10px;border-radius:999px;color:var(--green-700);font-weight:700}
-    h1{font-size:clamp(28px,4.2vw,44px);line-height:1.1;margin:.5rem 0 1rem}
-    p.lede{font-size:clamp(16px,2.4vw,19px);color:#2c3b2f;max-width:64ch}
+    .menu-btn{display:none;background:transparent;border:0;padding:8px;font-size:22px;color:var(--green)}
+    @media(max-width:900px){.menu-btn{display:block;margin-left:auto}}
+
+    .hero{background:linear-gradient(180deg,#fff,#f7fff8);padding:40px 0}
+    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+    @media(max-width:900px){.hero-inner{grid-template-columns:1fr}}
+    h1{font-size:clamp(28px,4.2vw,44px);margin:.5rem 0 1rem}
+    p.lede{font-size:18px;color:#2c3b2f;max-width:64ch}
     .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
     .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:2px solid var(--green);font-weight:800}
     .btn.primary{background:var(--green);color:white}
-    .btn:hover{transform:translateY(-1px)}
 
-    /* Sections */
     section{padding:56px 0}
-    section:nth-child(even){background:#fbfefb}
-    h2{font-size:clamp(22px,3.2vw,30px);margin:0 0 14px}
+    h2{font-size:clamp(22px,3.2vw,30px);margin-bottom:14px}
     .sub{color:var(--muted);max-width:70ch;margin-bottom:22px}
 
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    @media (max-width:900px){.grid-3{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}
-
     .card{background:#fff;border:1px solid #e8eee9;border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    .person{display:grid;grid-template-columns:100px 1fr;gap:14px;align-items:center}
+    .avatar{width:100px;height:100px;border-radius:14px;object-fit:cover}
 
-    /* Standardised portraits */
-    .person{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center}
-    .avatar{width:120px;height:120px;border-radius:14px;object-fit:cover;background:#e7f2ea}
-    .role{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800}
-    .socials{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
-    .socials a{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid #e2ebe4;border-radius:999px;color:#244c2e;font-weight:700}
+    .socials a svg{width:20px;height:20px;fill:var(--green)}
+    .socials{display:flex;gap:10px;margin-top:6px}
 
-    /* Gallery */
     .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .gallery img{width:100%;height:220px;object-fit:cover;border-radius:14px;border:1px solid #e8eee9}
-    @media (max-width:900px){.gallery{grid-template-columns:1fr 1fr}}
+    .gallery img{width:100%;height:180px;object-fit:cover;border-radius:10px}
 
-    blockquote{border-left:4px solid var(--green);padding:10px 14px;margin:0;background:#f6fbf7;border-radius:8px}
-
-    /* Footer */
-    footer{background:linear-gradient(180deg,#f5fff6,#e7f7e9);border-top:1px solid #e2eee6}
-    .foot{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;padding:28px 0}
-    .copy{color:#2d3b31}
-    @media (max-width:900px){.foot{grid-template-columns:1fr}}
+    footer{background:linear-gradient(180deg,#f5fff6,#e7f7e9);border-top:1px solid #e2eee6;padding:20px 0;text-align:center}
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="container nav">
-      <a class="brand" href="#home">
-        <img src="/WHR%20Logo.png" alt="World humanity revolution logo"/>
-        <span>World humanity revolution, UK</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#promoter">Promoter</a>
-        <a href="#principles">Principles</a>
-        <a href="#team">Key People</a>
-        <a href="#join">Join</a>
-        <a href="#donate">Donate</a>
-        <a href="#stand">Stand as MP</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#notices">Notice Board</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
+      <a class="brand" href="#home"><img src="/WHR%20Logo.png" alt="logo"><span>World humanity revolution, UK</span></a>
+      <button class="menu-btn">☰</button>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#promoter">Promoter</a></li>
+          <li><a href="#principles">Principles</a></li>
+          <li><a href="#team">Key People</a></li>
+          <li><a href="#join">Join</a></li>
+          <li><a href="#donate">Donate</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#notices">Notice Board</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </nav>
-      <button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu" aria-label="Mobile">
-      <a href="#about">About</a>
-      <a href="#promoter">Promoter</a>
-      <a href="#principles">Principles</a>
-      <a href="#team">Key People</a>
-      <a href="#join">Join</a>
-      <a href="#donate">Donate</a>
-      <a href="#stand">Stand as MP</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#notices">Notice Board</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
     </div>
   </header>
 
-  <!-- Hero -->
   <main id="home" class="hero">
     <div class="container hero-inner">
       <div>
-        <span class="tag">Registered British political party</span>
         <h1>Life is above everything and the world is for all</h1>
-        <p class="lede">World humanity revolution, UK is a registered British political party for Great Britain — England, Scotland and Wales — dedicated to dignity, fairness and service. We welcome everyone who believes in justice, compassion and practical action.</p>
+        <p class="lede">World humanity revolution, UK is a registered British political party for Great Britain — England, Scotland and Wales — dedicated to dignity, fairness and service.</p>
         <div class="cta">
           <a class="btn primary" href="#join">Join the Party</a>
           <a class="btn" href="#donate">Donate</a>
-          <a class="btn" href="https://www.facebook.com/profile.php?id=100092468306353" target="_blank" rel="noopener">Follow on Facebook</a>
         </div>
       </div>
       <div>
-        <!-- Use the white rose on the homepage instead of repeating the logo -->
-        <img src="/Rose.jpg" alt="White rose symbol" style="border-radius:18px;border:1px solid #e8eee9;box-shadow:var(--shadow)"/>
+        <img src="/Rose.jpg" alt="White rose" style="width:70%;margin:auto;border-radius:12px;display:block;">
       </div>
     </div>
   </main>
 
-  <!-- About -->
   <section id="about">
     <div class="container">
       <h2>About World humanity revolution, UK</h2>
-      <p class="sub">Our purpose is simple: protect the sanctity of life, uphold the truth of life, and fulfil the rights of life. We seek clean public service, accountable institutions and community‑first solutions across Great Britain.</p>
       <p class="sub"><strong>The World Humanity Revolution, UK</strong> is committed to revolutionising political thought based on humanitarian philosophy. We aim to promote social justice, equality, sustainable development, and human empowerment through nonviolent and inclusive means.</p>
-      <div class="grid-3">
-        <article class="card"><h3>People and dignity</h3><p>Policies that prioritise health, education, housing and support for families and carers, so every person can live with dignity.</p></article>
-        <article class="card"><h3>Clean governance</h3><p>Transparency, anti‑corruption standards and service‑driven leadership in public life.</p></article>
-        <article class="card"><h3>Safe and thriving communities</h3><p>Neighbourhood‑level investment, green spaces, and practical safety so people can flourish together.</p></article>
-      </div>
     </div>
   </section>
 
-  <!-- Promoter -->
   <section id="promoter">
     <div class="container">
       <h2>Promoter — Allama Imam Hayat</h2>
-      <div class="grid-2">
-        <div class="card person">
-          <img class="avatar" src="/Imam%20Hayat.jpg" alt="Allama Imam Hayat"/>
-          <div>
-            <div class="role">Promoter</div>
-            <h3 style="margin:.25rem 0">Allama Imam Hayat</h3>
-            <div class="socials">
-              <a href="https://www.facebook.com/AllamaImamHayat" target="_blank" rel="noopener">Facebook</a>
-              <a href="https://www.linkedin.com/in/allama-imam-hayat-a53a0320b/?originalSubdomain=bd" target="_blank" rel="noopener">LinkedIn</a>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <blockquote>
-            <p>A political party and philosophy based on authority of every life irrespective of faith without any materialistic discrimination and inequalities, and humanitarian state & world free from the tyranny of any single group—within a framework of a state structure of free life & a world order of free humanity, grounded in the full natural identity & rights of life</p>
-            <p style="margin-top:8px">— <strong>Allama Imam Hayat</strong></p>
-          </blockquote>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Principles / Meaning -->
-  <section id="principles">
-    <div class="container">
-      <h2>World humanity revolution means</h2>
-      <div class="card">
-        <ol>
-          <li><strong>Human Entity.</strong> Belief in the existence and human entity above all matters—such as language, ethnicity, state, gender, race, borders—but solely in the name of the kind Creator of life; to believe in the truth of life and live an enlightened humanitarian life for the welfare of all mankind guided by the light of holy Resalat of the Creator.</li>
-          <li><strong>Humanitarian Sensibility – Humanitarian Virtues – Humanitarian Sight.</strong> Human consciousness—mind, support or opposition—is led by some form of consciousness. Imanic consciousness represents the highest realisation of truth and is inseparable from humanitarian consciousness and sights. Both stand in opposition to materialistic consciousness and to extremism in the name of religion or any ideology that denies life and equal security, rights, and dignity. Humanitarian consciousness means recognising the rights given by the Creator and His Rasul to all people and acknowledging the duty to safeguard and serve humanity.</li>
-          <li><strong>Ownership of Life & Collective Ownership of the World – Khilafat‑e‑Insaniyat.</strong> The original owner of life and the universe is Allah and His Rasul. Every human being is given ownership of their own life—free from domination and enslavement—and a share in the collective ownership of the state, wealth and the world: the Khilafat‑e‑Insaniyat.</li>
-          <li><strong>Every Individual is Humanity Revolution.</strong> Each life stands in the stream of truth against falsehood, tyranny and oppression. Humanity Revolution is an existential commitment entrusted by the holy Resalat—never to aid oppression nor surrender to anti‑human forces.</li>
-          <li><strong>Human Nationality.</strong> Restoring a united human identity based on love for all creation through love for the Creator, rescuing humanity from materialistic nationalism that breeds division and exploitation.</li>
-          <li><strong>Politics of Humanity.</strong> Representative, protective and liberating politics that secures everyone’s rights given by Allah and His Rasul—against barbaric, communal and authoritarian politics that deny those rights.</li>
-          <li><strong>State of Humanity.</strong> A universal, inclusive and humanitarian state—free from the tyranny of a single group—grounded in life, collective ownership, security, freedom and rights for all.</li>
-          <li><strong>World System and Government of Humanity.</strong> Toward a natural, universal world of humanity—Khilafat‑e‑Insaniyat—an undivided world of independent lives, beyond the shackles of narrow materialistic borders.</li>
-          <li><strong>Economy of Humanity.</strong> Collective ownership of natural resources; a duty of the state to ensure food, shelter, healthcare, education and a healthy environment for every person; and a democratised flow of life and wealth.</li>
-        </ol>
-        <p style="margin-top:12px"><em>— Allama Imam Hayat</em></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team -->
-  <section id="team">
-    <div class="container">
-      <h2>Key People</h2>
-      <p class="sub">Our executive team helps deliver the party’s mission.</p>
-      <div class="grid-3">
-        <div class="card person">
-          <img class="avatar" src="/Nurul.png" alt="Party Leader Nurul Islam"/>
-          <div>
-            <div class="role">Party Leader</div>
-            <h3 style="margin:.25rem 0">Nurul Islam</h3>
-            <div class="socials"><a href="https://www.facebook.com/nurul.rahat" target="_blank" rel="noopener">Facebook</a></div>
-          </div>
-        </div>
-        <div class="card person">
-          <img class="avatar" src="/Mafiq.png" alt="Nominating Officer Mafiqul Islam"/>
-          <div>
-            <div class="role">Nominating Officer</div>
-            <h3 style="margin:.25rem 0">Mafiqul Islam</h3>
-            <div class="socials"><a href="https://www.facebook.com/MMafiq" target="_blank" rel="noopener">Facebook</a></div>
-          </div>
-        </div>
-        <div class="card person">
-          <img class="avatar" src="/akram.png" alt="Treasurer Akramuzzaman"/>
-          <div>
-            <div class="role">Treasurer</div>
-            <h3 style="margin:.25rem 0">Akramuzzaman</h3>
-            <div class="socials"><a href="https://www.facebook.com/akramuzzaman" target="_blank" rel="noopener">Facebook</a></div>
-          </div>
-        </div>
-        <div class="card person">
-          <img class="avatar" src="/mahmuda.png" alt="Campaigns Officer Mahmuda Akter"/>
-          <div>
-            <div class="role">Campaigns Officer</div>
-            <h3 style="margin:.25rem 0">Mahmuda Akter</h3>
-            <div class="socials"><a href="https://www.facebook.com/profile.php?id=100042437454229" target="_blank" rel="noopener">Facebook</a></div>
+      <div class="card person">
+        <img class="avatar" src="/Imam%20Hayat.jpg" alt="Allama Imam Hayat">
+        <div>
+          <div class="role">Promoter</div>
+          <h3>Allama Imam Hayat</h3>
+          <div class="socials">
+            <a href="https://www.facebook.com/AllamaImamHayat" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1 .9 0 1.8.1 2 .1v2.3h-1.1c-1 0-1.3.6-1.3 1.2V12h2.5l-.4 3h-2v7A10 10 0 0 0 22 12z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/allama-imam-hayat-a53a0320b/?originalSubdomain=bd" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zM8.34 19h-3.3v-9.98h3.3v9.98zM6.69 8.04c-1.06 0-1.93-.87-1.93-1.93s.87-1.93 1.93-1.93 1.93.87 1.93 1.93-.87 1.93-1.93 1.93zM19 19h-3.3v-5.46c0-1.3-.03-2.97-1.81-2.97-1.81 0-2.09 1.41-2.09 2.87v5.56h-3.3v-9.98h3.17v1.36h.05c.44-.83 1.53-1.7 3.15-1.7 3.37 0 4 2.22 4 5.11v5.21z"/></svg>
+            </a>
           </div>
         </div>
       </div>
+      <blockquote style="margin-top:20px;">
+        A political party and philosophy based on authority of every life irrespective of faith without any materialistic discrimination and inequalities, and humanitarian state & world free from the tyranny of any single group—within a framework of a state structure of free life & a world order of free humanity, grounded in the full natural identity & rights of life
+        <br>— <strong>Allama Imam Hayat</strong>
+      </blockquote>
     </div>
   </section>
 
-  <!-- Join (Google Form) -->
   <section id="join">
-    <div class="container">
+    <div class="container" style="text-align:center;">
       <h2>Join the Party</h2>
-      <p class="sub">Membership is open to people living in Great Britain who share our values. Complete the short form below and we’ll be in touch.</p>
-      <div class="card">
-        <iframe title="Join World humanity revolution — membership form" src="https://forms.gle/7h1Ckyk4ZvVjvgQ5A" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-      </div>
+      <p class="sub">Complete the membership form to become a part of the movement.</p>
+      <a class="btn primary" href="https://forms.gle/7h1Ckyk4ZvVjvgQ5A" target="_blank" rel="noopener">📝 Fill in Form</a>
     </div>
   </section>
 
-  <!-- Donate -->
-  <section id="donate">
-    <div class="container">
-      <h2>Donate</h2>
-      <p class="sub">Your donation supports grassroots organising, community outreach and candidate development. Thank you.</p>
-      <div class="grid-2">
-        <div class="card">
-          <h3>Online</h3>
-          <p><a class="btn primary" href="#" aria-disabled="true">Donate securely</a></p>
-          <p class="sub">Add your PayPal/Stripe link here.</p>
-        </div>
-        <div class="card">
-          <h3>Bank transfer</h3>
-          <p>Account name: World humanity revolution, UK<br/>Sort code: 00-00-00<br/>Account number: 00000000<br/>Reference: donation + your name</p>
-          <p class="sub">Replace placeholders with real details. Ensure compliance with UK Electoral Commission donation rules.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stand as MP -->
   <section id="stand">
-    <div class="container">
-      <h2>Stand as an MP Candidate</h2>
-      <p class="sub">If you’re interested in standing as a candidate for World humanity revolution, tell us about you and your constituency.</p>
-      <div class="card">
-        <form class="form" action="mailto:contact@worldhumanityrevolution.org.uk" method="post" enctype="text/plain">
-          <div><label for="name">Full name</label><input class="input" id="name" name="Name" required /></div>
-          <div class="grid-2">
-            <div><label for="email">Email</label><input class="input" id="email" name="Email" type="email" required /></div>
-            <div><label for="phone">Phone</label><input class="input" id="phone" name="Phone" /></div>
-          </div>
-          <div class="grid-2">
-            <div><label for="constituency">Constituency</label><input class="input" id="constituency" name="Constituency" /></div>
-            <div><label for="region">Nation/Region</label><select id="region" name="Region" class="input"><option>England</option><option>Scotland</option><option>Wales</option></select></div>
-          </div>
-          <div><label for="message">Tell us more</label><textarea id="message" name="About" rows="5" placeholder="Experience, community involvement, why you want to stand…"></textarea></div>
-          <button class="btn primary" type="submit">Express interest</button>
-        </form>
-      </div>
+    <div class="container" style="text-align:center;">
+      <h2>Stand as MP Candidate</h2>
+      <p class="sub">If you want to represent the people under World humanity revolution, apply below.</p>
+      <a class="btn primary" href="mailto:contact@worldhumanityrevolution.org.uk">📩 Apply Now</a>
     </div>
   </section>
 
-  <!-- Gallery -->
   <section id="gallery">
     <div class="container">
       <h2>Gallery</h2>
-      <p class="sub">A few moments from our work. Replace or add images in your repository to update this gallery.</p>
       <div class="gallery">
-        <img src="/Rose.jpg" alt="White rose"/>
-        <img src="/Imam%20Hayat.jpg" alt="Allama Imam Hayat"/>
-        <img src="/Nurul.png" alt="Nurul Islam"/>
-        <img src="/Mafiq.png" alt="Mafiqul Islam"/>
-        <img src="/akram.png" alt="Akramuzzaman"/>
-        <img src="/mahmuda.png" alt="Mahmuda Akter"/>
+        <img src="/Rose.jpg" alt="Rose">
+        <img src="/Imam%20Hayat.jpg" alt="Imam Hayat">
+        <img src="/Nurul.png" alt="Nurul Islam">
       </div>
     </div>
   </section>
 
-  <!-- Notice Board -->
   <section id="notices">
     <div class="container">
       <h2>Notice Board</h2>
-      <p class="sub">Official notices and documents. Place your PDFs in a <code>/files</code> folder and update the links below.</p>
       <div class="card">
         <ul>
-          <li><a href="/files/party-constitution.pdf" download>Party Constitution (PDF)</a></li>
-          <li><a href="/files/membership-rules.pdf" download>Membership Rules (PDF)</a></li>
-          <li><a href="/files/press-release.pdf" download>Latest Press Release (PDF)</a></li>
+          <li><a href="/files/WHR%20UK%20Constitution%20v.26.08.2025%20front.pdf" download>WHR UK Constitution (PDF)</a></li>
+          <li><a href="/files/WHR%20UK%20Financial%20Scheme%20v.26.08.2025%20Front.pdf" download>WHR UK Financial Scheme (PDF)</a></li>
         </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- News Links -->
-  <section id="news">
-    <div class="container">
-      <h2>News</h2>
-      <p class="sub">Recent updates and media mentions.</p>
-      <div class="card">
-        <ul>
-          <li><a href="#">Community event highlight — add link</a></li>
-          <li><a href="#">Policy statement — add link</a></li>
-          <li><a href="https://www.facebook.com/profile.php?id=100092468306353" target="_blank" rel="noopener">Follow updates on our Facebook page</a></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact / Footer -->
-  <section id="contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <div class="grid-2">
-        <div class="card">
-          <h3>Get in touch</h3>
-          <p>Email: <a href="mailto:contact@worldhumanityrevolution.org.uk">contact@worldhumanityrevolution.org.uk</a></p>
-          <p>Facebook: <a href="https://www.facebook.com/profile.php?id=100092468306353" target="_blank" rel="noopener">World humanity revolution, UK</a></p>
-          <p>Post: World humanity revolution, UK, <em>Your postal address here</em>.</p>
-          <p class="sub">For media enquiries, please include your outlet and deadline.</p>
-        </div>
-        <div class="card">
-          <h3>Legal</h3>
-          <p>World humanity revolution, UK is a registered British political party for Great Britain (England, Scotland and Wales).</p>
-          <p class="sub">© <span id="y"></span> World humanity revolution. All rights reserved.</p>
-        </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="container foot">
-      <div class="copy">Made with care by volunteers of World humanity revolution. If you find an accessibility issue, please let us know.</div>
-      <div style="text-align:right"><a class="btn" href="#home">Back to top ↑</a></div>
+    <div class="container">
+      <p>© <span id="y"></span> World humanity revolution, UK — Registered political party in Great Britain.</p>
     </div>
   </footer>
 
   <script>
-    // Update year
-    document.getElementById('y').textContent = new Date().getFullYear();
-    // Smooth scroll for same-page links
-    function smoothLinks(root){root.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});toggleMenu(false);}})});} 
-    smoothLinks(document);
-
-    // Mobile menu toggle
+    document.getElementById('y').textContent=new Date().getFullYear();
     const btn=document.querySelector('.menu-btn');
-    const menu=document.getElementById('mobileMenu');
-    function toggleMenu(force){const open=force!==undefined?force:menu.style.display!=="block";menu.style.display=open?"block":"none";btn.setAttribute('aria-expanded', open);} 
-    btn.addEventListener('click',()=>toggleMenu());
-    window.addEventListener('resize',()=>{if(window.innerWidth>900){menu.style.display='none';btn.setAttribute('aria-expanded','false');}});
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>World humanity revolution, UK</title>
-  <meta name="description" content="World humanity revolution, UK — a registered British political party in Great Britain (England, Scotland and Wales)." />
-  <meta property="og:title" content="World humanity revolution, UK" />
-  <meta property="og:description" content="A movement committed to life, dignity and service across Great Britain." />
-  <link rel="icon" href="/WHR%20Logo.png" />
-  <style>
-    :root{
-      --green:#1e7d32; --green-700:#155d24; --yellow:#ffeb3b;
-      --text:#122015; --muted:#4b5b50; --maxw:1100px; --radius:18px; --shadow:0 10px 25px rgba(0,0,0,.08);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--text)}
-    a{color:var(--green);text-decoration:none}
-    img{max-width:100%;height:auto;display:block}
-    .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
-
-    /* Header */
-    header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e8eee9}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
-    .brand{display:flex;align-items:center;gap:10px}
-    .brand img{width:40px;height:40px;border-radius:50%}
-    .brand span{font-weight:800;letter-spacing:.2px}
-
-    /* Desktop nav */
-    .nav-links{display:flex;gap:16px;align-items:center}
-
-    /* Mobile menu */
-    .menu-btn{display:none;background:transparent;border:0;padding:8px;border-radius:10px}
-    .menu-btn:focus{outline:2px solid var(--green)}
-    .mobile-menu{display:none;position:absolute;inset:64px 0 auto 0;background:#fff;border-bottom:1px solid #e8eee9}
-    .mobile-menu a{display:block;padding:14px 20px;border-top:1px solid #f0f5f1}
-
-    @media (max-width:900px){
-      .nav-links{display:none}
-      .menu-btn{display:inline-flex}
-    }
-
-    /* Hero */
-    .hero{background:radial-gradient(circle at 20% 0%, rgba(255,235,59,.35), transparent 50%),linear-gradient(180deg,#fff, #f7fff8);}
-    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;padding:48px 0}
-    @media (max-width:900px){.hero-inner{grid-template-columns:1fr}}
-    .tag{display:inline-block;background:rgba(30,125,50,.08);border:1px solid rgba(30,125,50,.18);padding:6px 10px;border-radius:999px;color:var(--green-700);font-weight:700}
-    h1{font-size:clamp(28px,4.2vw,44px);line-height:1.1;margin:.5rem 0 1rem}
-    p.lede{font-size:clamp(16px,2.4vw,19px);color:#2c3b2f;max-width:64ch}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:2px solid var(--green);font-weight:800}
-    .btn.primary{background:var(--green);color:white}
-    .btn:hover{transform:translateY(-1px)}
-
-    /* Sections */
-    section{padding:56px 0}
-    section:nth-child(even){background:#fbfefb}
-    h2{font-size:clamp(22px,3.2vw,30px);margin:0 0 14px}
-    .sub{color:var(--muted);max-width:70ch;margin-bottom:22px}
-
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    @media (max-width:900px){.grid-3{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}
-
-    .card{background:#fff;border:1px solid #e8eee9;border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
-
-    /* Standardised portraits */
-    .person{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center}
-    .avatar{width:120px;height:120px;border-radius:14px;object-fit:cover;background:#e7f2ea}
-    .role{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800}
-    .socials{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
-    .socials a{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid #e2ebe4;border-radius:999px;color:#244c2e;font-weight:700}
-
-    /* Gallery */
-    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .gallery img{width:100%;height:220px;object-fit:cover;border-radius:14px;border:1px solid #e8eee9}
-    @media (max-width:900px){.gallery{grid-template-columns:1fr 1fr}}
-
-    blockquote{border-left:4px solid var(--green);padding:10px 14px;margin:0;background:#f6fbf7;border-radius:8px}
-
-    /* Footer */
-    footer{background:linear-gradient(180deg,#f5fff6,#e7f7e9);border-top:1px solid #e2eee6}
-    .foot{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;padding:28px 0}
-    .copy{color:#2d3b31}
-    @media (max-width:900px){.foot{grid-template-columns:1fr}}
-  </style>
-</head>
-<body>
-  <!-- Header -->
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#home">
-        <img src="/WHR%20Logo.png" alt="World humanity revolution logo"/>
-        <span>World humanity revolution, UK</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#promoter">Promoter</a>
-        <a href="#principles">Principles</a>
-        <a href="#team">Key People</a>
-        <a href="#join">Join</a>
-        <a href="#donate">Donate</a>
-        <a href="#stand">Stand as MP</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#notices">Notice Board</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu" aria-label="Mobile">
-      <a href="#about">About</a>
-      <a href="#promoter">Promoter</a>
-      <a href="#principles">Principles</a>
-      <a href="#team">Key People</a>
-      <a href="#join">Join</a>
-      <a href="#donate">Donate</a>
-      <a href="#stand">Stand as MP</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#notices">Notice Board</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <main id="home" class="hero">
-    <div class="container hero-inner">
-      <div>
-        <span class="tag">Registered British political party</span>
-        <h1>Life is above everything and the world is for all</h1>
-        <p class="lede">World humanity revolution, UK is a registered British political party for Great Britain — England, Scotland and Wales — dedicated to dignity, fairness and service. We welcome everyone who believes in justice, compassion and practical action.</p>
-        <div class="cta">
-          <a class="btn primary" href="#join">Join the Party</a>
-          <a class="btn" href="#donate">Donate</a>
-          <a class="btn" href="https://www.facebook.com/profile.php?id=100092468306353" target="_blank" rel="noopener">Follow on Facebook</a>
-        </div>
-      </div>
-      <div>
-        <!-- Use the white rose on the homepage instead of repeating the logo -->
-        <img src="/Rose.jpg" alt="White rose symbol" style="border-radius:18px;border:1px solid #e8eee9;box-shadow:var(--shadow)"/>
-      </div>
-    </div>
-  </main>
-
-  <!-- About -->
-  <section id="about">
-    <div class="container">
-      <h2>About World humanity revolution, UK</h2>
-      <p class="sub">Our purpose is simple: protect the sanctity of life, uphold the truth of life, and fulfil the rights of life. We seek clean public service, accountable institutions and community‑first solutions across Great Britain.</p>
-      <p class="sub"><strong>The World Humanity Revolution, UK</strong> is committed to revolutionising political thought based on humanitarian philosophy. We aim to promote social justice, equality, sustainable development, and human empowerment through nonviolent and inclusive means.</p>
-      <div class="grid-3">
-        <article class="card"><h3>People and dignity</h3><p>Policies that prioritise health, education, housing and support for families and carers, so every person can live with dignity.</p></article>
-        <article class="card"><h3>Clean governance</h3><p>Transparency, anti‑corruption standards and service‑driven leadership in public life.</p></article>
-        <article class="card"><h3>Safe and thriving communities</h3><p>Neighbourhood‑level investment, green spaces, and practical safety so people can flourish together.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Promoter -->
-  <section id="promoter">
-    <div class="container">
-      <h2>Promoter — Allama Imam Hayat</h2>
-      <div class="grid-2">
-        <div class="card person">
-          <img class="avatar" src="/Imam%20Hayat.jpg" alt="Allama Imam Hayat"/>
-          <div>
-            <div class="role">Promoter</div>
-            <h3 style="margin:.25rem 0">Allama Imam Hayat</h3>
-            <div class="socials">
-              <a href="https://www.facebook.com/AllamaImamHayat" target="_blank" rel="noopener">Facebook</a>
-              <a href="https://www.linkedin.com/in/allama-imam-hayat-a53a0320b/?originalSubdomain=bd" target="_blank" rel="noopener">LinkedIn</a>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <blockquote>
-            <p>A political party and philosophy based on authority of every life irrespective of faith without any materialistic discrimination and inequalities, and humanitarian state & world free from the tyranny of any single group—within a framework of a state structure of free life & a world order of free humanity, grounded in the full natural identity & rights of life</p>
-            <p style="margin-top:8px">— <strong>Allama Imam Hayat</strong></p>
-          </blockquote>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Principles / Meaning -->
-  <section id="principles">
-    <div class="container">
-      <h2>World humanity revolution means</h2>
-      <div class="card">
-        <ol>
-          <li><strong>Human Entity.</strong> Belief in the existence and human entity above all matters—such as language, ethnicity, state, gender, race, borders—but solely in the name of the kind Creator of life; to believe in the truth of life and live an enlightened humanitarian life for the welfare of all mankind guided by the light of holy Resalat of the Creator.</li>
-          <li><strong>Humanitarian Sensibility – Humanitarian Virtues – Humanitarian Sight.</strong> Human consciousness—mind, support or opposition—is led by some form of consciousness. Imanic consciousness represents the highest realisation of truth and is inseparable from humanitarian consciousness and sights. Both stand in opposition to materialistic consciousness and to extremism in the name of religion or any ideology that denies life and equal security, rights, and dignity. Humanitarian consciousness means recognising the rights given by the Creator and His Rasul to all people and acknowledging the duty to safeguard and serve humanity.</li>
-          <li><strong>Ownership of Life & Collective Ownership of the World – Khilafat‑e‑Insaniyat.</strong> The original owner of life and the universe is Allah and His Rasul. Every human being is given ownership of their own life—free from domination and enslavement—and a share in the collective ownership of the state, wealth and the world: the Khilafat‑e‑Insaniyat.</li>
-          <li><strong>Every Individual is Humanity Revolution.</strong> Each life stands in the stream of truth against falsehood, tyranny and oppression. Humanity Revolution is an existential commitment entrusted by the holy Resalat—never to aid oppression nor surrender to anti‑human forces.</li>
-          <li><strong>Human Nationality.</strong> Restoring a united human identity based on love for all creation through love for the Creator, rescuing humanity from materialistic nationalism that breeds division and exploitation.</li>
-          <li><strong>Politics of Humanity.</strong> Representative, protective and liberating politics that secures everyone’s rights given by Allah and His Rasul—against barbaric, communal and authoritarian politics that deny those rights.</li>
-          <li><strong>State of Humanity.</strong> A universal, inclusive and humanitarian state—free from the tyranny of a single group—grounded in life, collective ownership, security, freedom and rights for all.</li>
-          <li><strong>World System and Government of Humanity.</strong> Toward a natural, universal world of humanity—Khilafat‑e‑Insaniyat—an undivided world of independent lives, beyond the shackles of narrow materialistic borders.</li>
-          <li><strong>Economy of Humanity.</strong> Collective ownership of natural resources; a duty of the state to ensure food, shelter, healthcare, education and a healthy environment for every person; and a democratised flow of life and wealth.</li>
-        </ol>
-        <p style="margin-top:12px"><em>— Allama Imam Hayat</em></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team -->
-  <section id="team">
-    <div class="container">
-      <h2>Key People</h2>
-      <p class="sub">Our executive team helps deliver the party’s mission.</p>
-      <div class="grid-3">
-        <div class="card person">
-          <img class="avatar" src="/Nurul.png" alt="Party Leader Nurul Islam"/>
-          <div>
-            <div class="role">Party Leader</div>
-            <h3 style="margin:.25rem 0">Nurul Islam</h3>
-            <div class="socials"><a href="https://www.facebook.com/nurul.rahat" target="_blank" rel="noopener">Facebook</a></div>
-          </div>
-        </div>
-        <div class="card person">
-          <img class="avatar" src="/Mafiq.png" alt="Nominating Officer Mafiqul Islam"/>
-          <div>
-            <div class="role">Nominating Officer</div>
-            <h3 style="margin:.25rem 0">Mafiqul Islam</h3>
-            <div class="socials"><a href="https://www.facebook.com/MMafiq" target="_blank" rel="noopener">Facebook</a></div>
-          </div>
-        </div>
-        <div class="card person">
-          <img class="avatar" src="/akram.png" alt="Treasurer Akramuzzaman"/>
-          <div>
-            <div class="role">Treasurer</div>
-            <h3 style="margin:.25rem 0">Akramuzzaman</h3>
-            <div class="socials"><a href="https://www.facebook.com/akramuzzaman" target="_blank" rel="noopener">Facebook</a></div>
-          </div>
-        </div>
-        <div class="card person">
-          <img class="avatar" src="/mahmuda.png" alt="Campaigns Officer Mahmuda Akter"/>
-          <div>
-            <div class="role">Campaigns Officer</div>
-            <h3 style="margin:.25rem 0">Mahmuda Akter</h3>
-            <div class="socials"><a href="https://www.facebook.com/profile.php?id=100042437454229" target="_blank" rel="noopener">Facebook</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Join (Google Form) -->
-  <section id="join">
-    <div class="container">
-      <h2>Join the Party</h2>
-      <p class="sub">Membership is open to people living in Great Britain who share our values. Complete the short form below and we’ll be in touch.</p>
-      <div class="card">
-        <iframe title="Join World humanity revolution — membership form" src="https://forms.gle/7h1Ckyk4ZvVjvgQ5A" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- Donate -->
-  <section id="donate">
-    <div class="container">
-      <h2>Donate</h2>
-      <p class="sub">Your donation supports grassroots organising, community outreach and candidate development. Thank you.</p>
-      <div class="grid-2">
-        <div class="card">
-          <h3>Online</h3>
-          <p><a class="btn primary" href="#" aria-disabled="true">Donate securely</a></p>
-          <p class="sub">Add your PayPal/Stripe link here.</p>
-        </div>
-        <div class="card">
-          <h3>Bank transfer</h3>
-          <p>Account name: World humanity revolution, UK<br/>Sort code: 00-00-00<br/>Account number: 00000000<br/>Reference: donation + your name</p>
-          <p class="sub">Replace placeholders with real details. Ensure compliance with UK Electoral Commission donation rules.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stand as MP -->
-  <section id="stand">
-    <div class="container">
-      <h2>Stand as an MP Candidate</h2>
-      <p class="sub">If you’re interested in standing as a candidate for World humanity revolution, tell us about you and your constituency.</p>
-      <div class="card">
-        <form class="form" action="mailto:contact@worldhumanityrevolution.org.uk" method="post" enctype="text/plain">
-          <div><label for="name">Full name</label><input class="input" id="name" name="Name" required /></div>
-          <div class="grid-2">
-            <div><label for="email">Email</label><input class="input" id="email" name="Email" type="email" required /></div>
-            <div><label for="phone">Phone</label><input class="input" id="phone" name="Phone" /></div>
-          </div>
-          <div class="grid-2">
-            <div><label for="constituency">Constituency</label><input class="input" id="constituency" name="Constituency" /></div>
-            <div><label for="region">Nation/Region</label><select id="region" name="Region" class="input"><option>England</option><option>Scotland</option><option>Wales</option></select></div>
-          </div>
-          <div><label for="message">Tell us more</label><textarea id="message" name="About" rows="5" placeholder="Experience, community involvement, why you want to stand…"></textarea></div>
-          <button class="btn primary" type="submit">Express interest</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery -->
-  <section id="gallery">
-    <div class="container">
-      <h2>Gallery</h2>
-      <p class="sub">A few moments from our work. Replace or add images in your repository to update this gallery.</p>
-      <div class="gallery">
-        <img src="/Rose.jpg" alt="White rose"/>
-        <img src="/Imam%20Hayat.jpg" alt="Allama Imam Hayat"/>
-        <img src="/Nurul.png" alt="Nurul Islam"/>
-        <img src="/Mafiq.png" alt="Mafiqul Islam"/>
-        <img src="/akram.png" alt="Akramuzzaman"/>
-        <img src="/mahmuda.png" alt="Mahmuda Akter"/>
-      </div>
-    </div>
-  </section>
-
-  <!-- Notice Board -->
-  <section id="notices">
-    <div class="container">
-      <h2>Notice Board</h2>
-      <p class="sub">Official notices and documents. Place your PDFs in a <code>/files</code> folder and update the links below.</p>
-      <div class="card">
-        <ul>
-          <li><a href="/files/party-constitution.pdf" download>Party Constitution (PDF)</a></li>
-          <li><a href="/files/membership-rules.pdf" download>Membership Rules (PDF)</a></li>
-          <li><a href="/files/press-release.pdf" download>Latest Press Release (PDF)</a></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- News Links -->
-  <section id="news">
-    <div class="container">
-      <h2>News</h2>
-      <p class="sub">Recent updates and media mentions.</p>
-      <div class="card">
-        <ul>
-          <li><a href="#">Community event highlight — add link</a></li>
-          <li><a href="#">Policy statement — add link</a></li>
-          <li><a href="https://www.facebook.com/profile.php?id=100092468306353" target="_blank" rel="noopener">Follow updates on our Facebook page</a></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact / Footer -->
-  <section id="contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <div class="grid-2">
-        <div class="card">
-          <h3>Get in touch</h3>
-          <p>Email: <a href="mailto:contact@worldhumanityrevolution.org.uk">contact@worldhumanityrevolution.org.uk</a></p>
-          <p>Facebook: <a href="https://www.facebook.com/profile.php?id=100092468306353" target="_blank" rel="noopener">World humanity revolution, UK</a></p>
-          <p>Post: World humanity revolution, UK, <em>Your postal address here</em>.</p>
-          <p class="sub">For media enquiries, please include your outlet and deadline.</p>
-        </div>
-        <div class="card">
-          <h3>Legal</h3>
-          <p>World humanity revolution, UK is a registered British political party for Great Britain (England, Scotland and Wales).</p>
-          <p class="sub">© <span id="y"></span> World humanity revolution. All rights reserved.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container foot">
-      <div class="copy">Made with care by volunteers of World humanity revolution. If you find an accessibility issue, please let us know.</div>
-      <div style="text-align:right"><a class="btn" href="#home">Back to top ↑</a></div>
-    </div>
-  </footer>
-
-  <script>
-    // Update year
-    document.getElementById('y').textContent = new Date().getFullYear();
-    // Smooth scroll for same-page links
-    function smoothLinks(root){root.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});toggleMenu(false);}})});} 
-    smoothLinks(document);
-
-    // Mobile menu toggle
-    const btn=document.querySelector('.menu-btn');
-    const menu=document.getElementById('mobileMenu');
-    function toggleMenu(force){const open=force!==undefined?force:menu.style.display!=="block";menu.style.display=open?"block":"none";btn.setAttribute('aria-expanded', open);} 
-    btn.addEventListener('click',()=>toggleMenu());
-    window.addEventListener('resize',()=>{if(window.innerWidth>900){menu.style.display='none';btn.setAttribute('aria-expanded','false');}});
+    const nav=document.querySelector('nav ul');
+    btn.addEventListener('click',()=>{nav.classList.toggle('show');});
   </script>
 </body>
 </html>
